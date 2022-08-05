@@ -1,6 +1,6 @@
 import groovy.json.JsonOutput
 parameters {
-  string(defaultValue: 'master', description: 'aws-key-rotation repo tag', name: 'master')
+  string(defaultValue: 'master', description: 'aws-key-rotation repo', name: 'master')
 }
 def doTLSCheck() {
   dir ("${env.WORKSPACE}") {
@@ -17,10 +17,10 @@ def doTLSCheck() {
 node ('master') {
     def gitBranch = (params.git_branch_name) ?: 'master'
     def username = 'sharan-cd'
-    def password = ''
+    def password = 'Sr@Ka#21aQJ(GZ17'
     stage('GitCheckoutRepo') {
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'GHE_API_TOKEN',
-                      usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                      usernameVariable: 'sharan-cd', passwordVariable: 'Sr@Ka#21aQJ(GZ17']]) {
         checkout master
         dir("${env.WORKSPACE}") {
           git branch: "${gitBranch}",
@@ -36,7 +36,7 @@ node ('master') {
           source venv/bin/activate;
           pip install --upgrade pip;
           pip install requests prettytable boto3
-          python vendor-tls-check.py
+          python iam-users-list.py
         """
     }
   }
