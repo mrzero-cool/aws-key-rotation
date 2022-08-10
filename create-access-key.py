@@ -49,7 +49,7 @@ def email_users(emailId, activeDays):
             print("Email sent successfully", res)
         except Exception as ex:
             print ("Email sending failed", ex)
-    if activeDays == 2:
+    if activeDays > 90:
         try:
             message = MIMEMultipart()
             message['Subject'] = 'New AccessKey Creation Notification'
@@ -131,7 +131,7 @@ def access_key_creation(userData, emailId, activeDays):
 for userData in data:
     activeDays = userData['keyActiveDays']
     emailId = userData['emailId']
-    if activeDays == 1000:
+    if activeDays > 80:
         access_key_creation(userData, emailId, activeDays)
     else:
         print('No access key expired')
