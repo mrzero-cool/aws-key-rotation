@@ -4,9 +4,9 @@ from botocore.exceptions import ClientError
 
 iam_client = boto3.client('iam')
 
-db_client = boto3.client('dynamodb')
+db_client = boto3.client('dynamodb', region_name = 'ap-south-1')
 
-db_resource = boto3.resource('dynamodb')
+db_resource = boto3.resource('dynamodb', region_name = 'ap-south-1')
 
 db_table = db_resource.Table('Users-List-IAM')
 
