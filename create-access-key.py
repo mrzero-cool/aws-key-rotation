@@ -131,6 +131,8 @@ def access_key_creation(userData, emailId, activeDays):
 for userData in data:
     activeDays = userData['keyActiveDays']
     emailId = userData['emailId']
+    if 80 < activeDays <= 90:
+        email_users(emailId, activeDays)
     if activeDays > 90:
         access_key_creation(userData, emailId, activeDays)
     else:
